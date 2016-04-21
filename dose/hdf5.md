@@ -95,5 +95,26 @@ Construct a data type:
         dset10['Name', 'Weight', 0:2] # get name and weight for first two.
         
 ## Dataset Storage Layouts
-There are different possible layouts for contiguous, chunked, compact, external.
+There are different possible layouts for contiguous (default), chunked, compact, external.  Contiguous is normal i.e. things are accessed following rows so accessing in rows is fast, by columns is slow.  Chunked stores thing differently so you can specficy a chunk size and it will follow through the chunk.  The stuff would be stored in a different order to work better with being accessed via this method.  Chunks can be independently compressed.  But if we want to read elements from 2 chunks then both chunks will be read in.  Chunks should be between 10kb and 500kb...  
+
+        chunky = f.create_dataset('chunkyset', (100, 640, 480), chunks=(1, 320, 240)) # here we will store 100 images.
+        stretchy = f.create_dataset('stretchy', (1000,), maxshape=(5000,) ) # sets  max possible size.
+        stretchy.resize(3000,) # can resize the dataset.  You can do this with multiple dimensions.
+        # if you specify the maxsize to be None, you can expand it to any size.
         
+        
+NB: Enthought course has more stuff on compression and filters.
+
+# Command Line Tools
+
+        h5ls file.hdf5 # 
+        h5ls -r file.hdf5 # recursive list
+        h5ls file.hdf5/mygroup # list group
+        h5ls -v file.hdf5/mygroup # verbose info about the group
+        h5dump file.hdf5 # dump the lot to screen
+        h5dump -H file.hdf5 # dump headers to screen
+        h5dump -H -d /mydataset file.hdf5 # dump headers about dataset.
+        h5dump -d /mydataset file.hdf5 # with data.
+        h5repack -f GZIP=9 file.hdf5 out.hdf5 # compress the file.
+        
+There are other commands, see the HDF5 group website.  https://www.hdfgroup.org/

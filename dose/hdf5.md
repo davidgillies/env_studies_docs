@@ -13,3 +13,22 @@ You can define compound data types on hdf5.  Datasets are resizable.  Compressed
 
 A convention is a standardized arrangement of groups, datasets and attributes used to solve a domain specific problem.
 
+## Datasets
+They 'rectangular' sets of homogenous data which can be multi-dimensional.  dataspace describes the shape and datatype the type of variables that are in it.  
+
+    import h5py
+    f = h5py.File("file.hdf5")
+    dset = f.create_dataset("mydataset", (10,10), dtype='f') # name, shape, datatype.
+    # shape is a 2-D structure 10 x 10.
+    # datatype f is a single point float, e.g. 10.0
+    dset[0,0] = 2.0
+    f.close()
+    f = h5py.File("file.hdf5")
+    dset = f['mydataset']
+    dset.shape
+    dset.dtype
+    dset[0,0]
+    
+HDFView - https://www.hdfgroup.org/products/java/release/download.html
+
+    

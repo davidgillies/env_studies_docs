@@ -1,0 +1,9 @@
+total 28
+drwx------  6 u41464 dyno 4096 Oct 16 14:47 .
+drwx------ 15 u41464 dyno 4096 Oct 16 14:47 ..
+drwx------  8 u41464 dyno 4096 Oct 16 14:47 .git
+-rw-------  1 u41464 dyno   19 Oct 16 14:47 README.md
+-rw-------  1 u41464 dyno    0 Oct 16 14:47 afile
+drwx------  4 u41464 dyno 4096 Oct 16 14:47 dose
+drwx------  2 u41464 dyno 4096 Oct 16 14:47 np
+drwx------  2 u41464 dyno 4096 Oct 16 14:47 resources
